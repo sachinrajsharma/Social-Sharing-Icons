@@ -1,0 +1,142 @@
+/* Modern Social Media Floating Bar */
+.csfb-container {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 0 15px 5px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.csfb-container:hover {
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.csfb-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 20px;
+  border-radius: 50%;
+  transition: all 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.csfb-icon i {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.csfb-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Individual icon colors with gradient enhancements */
+.csfb-icon.fb { 
+  background: linear-gradient(135deg, #3b5998, #4c70ba);
+}
+.csfb-icon.tw { 
+  background: linear-gradient(135deg, #1da1f2, #0096f2);
+}
+.csfb-icon.ig { 
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.csfb-icon.li { 
+  background: linear-gradient(135deg, #0077b5, #00a0dc);
+}
+.csfb-icon.yt { 
+  background: linear-gradient(135deg, #ff0000, #e62117);
+}
+.csfb-icon.pin { 
+  background: linear-gradient(135deg, #bd081c, #e60023);
+}
+
+/* Hover effects */
+.csfb-icon:hover {
+  transform: translateX(8px) scale(1.1);
+  opacity: 1;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.csfb-icon:hover::before {
+  opacity: 1;
+}
+
+.csfb-icon:hover i {
+  transform: scale(1.2);
+}
+
+/* Tooltip on hover */
+.csfb-icon::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: normal;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+}
+
+.csfb-icon:hover::after {
+  opacity: 1;
+  margin-left: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .csfb-container {
+    padding: 10px 0 10px 3px;
+    transform: translate(-85%, -50%);
+    transition: transform 0.3s ease;
+  }
+  
+  .csfb-container:hover {
+    transform: translate(0, -50%);
+    padding-left: 8px;
+  }
+  
+  .csfb-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .csfb-icon:hover {
+    transform: translateX(5px) scale(1.05);
+  }
+}
